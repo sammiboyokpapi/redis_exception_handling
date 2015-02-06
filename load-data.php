@@ -11,8 +11,14 @@ require_once '_config/config.php';
 require_once 'model/model.php';
 $before = microtime(true);
 
+try {
+		
+		$model_call = new Model();
+		} catch (Exception $e) {
+echo  $e->getMessage();
+exit();
 
-$model_call = new Model();
+		}
 //if(isset($_GET['load-data'])){
     $request_data = $model_call->load_doc(array('msisdn'=>'2348136002678','content_id'=>'*','subscription_status'=>'*','time_created'=>'*'),Options::$query_limit,'');
     echo '<pre>';

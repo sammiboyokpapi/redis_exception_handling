@@ -12,7 +12,14 @@ require_once 'model/model.php';
 $before = microtime(true);
 
 
-$model_call = new Model();
+	try {
+		
+		$model_call = new Model();
+		} catch (Exception $e) {
+		echo $data =  $e->getMessage();
+		exit();
+	}
+
 $request_data = $model_call->update_doc(array('msisdn'=>'230','cpid'=>'cp-1001201412','cds_campaign_id'=>'cc-c-10012014201001201441','expiry_time'=>'2014-03-29 22:15:10'));
 echo '<pre>';
 print_r($request_data);
